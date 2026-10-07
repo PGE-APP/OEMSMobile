@@ -5,7 +5,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 
-import { theme } from '../../theme/theme';
+import { theme } from '../../../theme/theme';
 
 export function createOrbStyle(panelWidth: number, scale = 1): ViewStyle {
   const { orb } = theme.login;
@@ -79,18 +79,6 @@ export const styles = StyleSheet.create({
     height: 42,
     borderRadius: 10,
     backgroundColor: theme.colors.navy900,
-  },
-  brandMarkGlyphBase: {
-    fontWeight: '700',
-    color: theme.colors.onBrand,
-  },
-  brandMarkGlyphRegular: {
-    fontSize: 28,
-    lineHeight: 32,
-  },
-  brandMarkGlyphCompact: {
-    fontSize: 24,
-    lineHeight: 28,
   },
   brandName: {
     fontSize: 18,

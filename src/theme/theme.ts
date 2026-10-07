@@ -29,6 +29,18 @@ export const theme = {
     success: '#14865e',
     successBorder: '#b7ebd1',
     successSurface: '#edf9f4',
+    warning: '#d97706',
+    chartSecondary: '#64748b',
+    overlay: 'rgba(3, 19, 36, 0.56)',
+    refinery: [
+      '#1769e0',
+      '#18a673',
+      '#65a30d',
+      '#d97706',
+      '#7c3aed',
+      '#db2777',
+      '#2563eb',
+    ],
   },
   spacing: {
     md: 16,

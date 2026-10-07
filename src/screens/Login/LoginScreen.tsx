@@ -12,9 +12,14 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { ShieldCheck } from '../../components/icons/ShieldCheck';
 import type { RootStackParamList } from '../../routs';
 import { theme } from '../../theme/theme';
-import { createOrbStyle, demoCodeStyle, styles } from './LoginScreen.styles';
+import {
+  createOrbStyle,
+  demoCodeStyle,
+  styles,
+} from './styles/LoginScreen.styles';
 
 const DEVELOPMENT_CREDENTIALS = {
   email: 'admin@oems.local',
@@ -38,14 +43,11 @@ function BrandMark({ compact = false }: { compact?: boolean }) {
         compact ? styles.brandMarkCompact : styles.brandMarkRegular,
       ]}
     >
-      <Text
-        style={[
-          styles.brandMarkGlyphBase,
-          compact ? styles.brandMarkGlyphCompact : styles.brandMarkGlyphRegular,
-        ]}
-      >
-        ✓
-      </Text>
+      <ShieldCheck
+        color={theme.colors.onBrand}
+        size={compact ? 24 : 28}
+        strokeWidth={2.25}
+      />
     </View>
   );
 }
