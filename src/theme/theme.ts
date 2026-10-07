@@ -1,0 +1,53 @@
+export const theme = {
+  colors: {
+    navy900: '#06284c',
+    primary: '#1769e0',
+    primaryPressed: '#1258bc',
+    primarySubtle: '#eff6ff',
+    primaryBorder: '#cfe0f7',
+    layout: '#f4f7fb',
+    surface: '#ffffff',
+
+    border: '#e5ebf3',
+    text: '#17283d',
+    textSecondary: '#66788f',
+    onBrand: '#ffffff',
+    onBrandSecondary: 'rgba(255, 255, 255, 0.64)',
+    onBrandSubdued: 'rgba(255, 255, 255, 0.56)',
+    onBrandSurface: 'rgba(255, 255, 255, 0.08)',
+    onBrandBorder: 'rgba(255, 255, 255, 0.25)',
+    brand: {
+      ring: 'rgba(255, 255, 255, 0.18)',
+      ringFaint: 'rgba(255, 255, 255, 0.05)',
+      ringFainter: 'rgba(255, 255, 255, 0.03)',
+    },
+    loginAccent: '#7fb3ff',
+    placeholder: '#91a0b4',
+    danger: '#d14343',
+    dangerBorder: '#ffccc7',
+    dangerSurface: '#fff2f0',
+    success: '#14865e',
+    successBorder: '#b7ebd1',
+    successSurface: '#edf9f4',
+  },
+  spacing: {
+    md: 16,
+    lg: 24,
+  },
+  radius: {
+    md: 8,
+    lg: 12,
+  },
+  login: {
+    orb: {
+      sizeRatio: 0.58,
+      rightOffsetRatio: 0.35,
+      bottomOffsetRatio: 0.35,
+      outerScale: 1.55,
+      middleScale: 1.28,
+      borderWidth: 1,
+    },
+  },
+} as const;
+
+export type AppTheme = typeof theme;
