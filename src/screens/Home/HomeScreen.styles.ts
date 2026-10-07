@@ -1,18 +1,95 @@
-export const styles = {
-  page: 'flex-1 bg-oems-layout px-6',
-  header: 'flex-row items-center justify-between py-4',
-  brand: 'text-[22px] font-bold tracking-[1.3px] text-oems-navy',
-  brandCaption: 'mt-0.5 text-[11px] text-oems-muted',
-  logoutButton:
-    'min-h-[42px] justify-center rounded-oems-md border border-oems-primary-border bg-oems-surface px-4 active:bg-oems-primary-subtle',
-  logoutButtonText: 'text-sm font-semibold text-oems-primary',
-  content: 'flex-1 justify-center pb-20',
-  title: 'text-[30px] font-bold leading-10 text-oems-text',
-  subtitle: 'mt-2 max-w-[520px] text-[15px] leading-6 text-oems-muted',
-  statusPanel:
-    'mt-6 max-w-[520px] flex-row items-center gap-3 rounded-oems-lg border border-oems-border bg-oems-surface p-4',
-  statusIndicator: 'h-2.5 w-2.5 rounded-full bg-oems-success',
-  statusCopy: 'flex-1',
-  statusTitle: 'text-[15px] font-semibold text-oems-text',
-  statusDescription: 'mt-[3px] text-[13px] leading-[19px] text-oems-muted',
-} as const;
+import { StyleSheet } from 'react-native';
+
+import { theme } from '../../theme/theme';
+
+export const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    backgroundColor: theme.colors.layout,
+    paddingHorizontal: 24,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 16,
+  },
+  brand: {
+    fontSize: 22,
+    fontWeight: '700',
+    letterSpacing: 1.3,
+    color: theme.colors.navy900,
+  },
+  brandCaption: {
+    marginTop: 2,
+    fontSize: 11,
+    color: theme.colors.textSecondary,
+  },
+  logoutButton: {
+    minHeight: 42,
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: theme.colors.primaryBorder,
+    borderRadius: theme.radius.md,
+    backgroundColor: theme.colors.surface,
+    paddingHorizontal: 16,
+  },
+  logoutButtonPressed: {
+    backgroundColor: theme.colors.primarySubtle,
+  },
+  logoutButtonText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: theme.colors.primary,
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingBottom: 80,
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: '700',
+    lineHeight: 40,
+    color: theme.colors.text,
+  },
+  subtitle: {
+    maxWidth: 520,
+    marginTop: 8,
+    fontSize: 15,
+    lineHeight: 24,
+    color: theme.colors.textSecondary,
+  },
+  statusPanel: {
+    maxWidth: 520,
+    marginTop: 24,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    borderWidth: 1,
+    borderColor: theme.colors.border,
+    borderRadius: theme.radius.lg,
+    backgroundColor: theme.colors.surface,
+    padding: 16,
+  },
+  statusIndicator: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: theme.colors.success,
+  },
+  statusCopy: {
+    flex: 1,
+  },
+  statusTitle: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: theme.colors.text,
+  },
+  statusDescription: {
+    marginTop: 3,
+    fontSize: 13,
+    lineHeight: 19,
+    color: theme.colors.textSecondary,
+  },
+});

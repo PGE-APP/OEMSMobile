@@ -33,14 +33,16 @@ function BrandMark({ compact = false }: { compact?: boolean }) {
   return (
     <View
       accessibilityElementsHidden
-      className={`${styles.brandMarkBase} ${
-        compact ? styles.brandMarkCompact : styles.brandMarkRegular
-      }`}
+      style={[
+        styles.brandMarkBase,
+        compact ? styles.brandMarkCompact : styles.brandMarkRegular,
+      ]}
     >
       <Text
-        className={`${styles.brandMarkGlyphBase} ${
-          compact ? styles.brandMarkGlyphCompact : styles.brandMarkGlyphRegular
-        }`}
+        style={[
+          styles.brandMarkGlyphBase,
+          compact ? styles.brandMarkGlyphCompact : styles.brandMarkGlyphRegular,
+        ]}
       >
         ✓
       </Text>
@@ -59,47 +61,50 @@ function BrandPanel({
 
   return (
     <View
-      className={styles.brandPanel}
       onLayout={event => setPanelWidth(event.nativeEvent.layout.width)}
-      style={{
-        paddingTop: Math.max(topInset, 32),
-        paddingBottom: Math.max(bottomInset, 32),
-      }}
+      style={[
+        styles.brandPanel,
+        {
+          paddingTop: Math.max(topInset, 32),
+          paddingBottom: Math.max(bottomInset, 32),
+        },
+      ]}
     >
       <View
-        className={styles.brandOrbOuter}
-        style={createOrbStyle(panelWidth, theme.login.orb.outerScale)}
+        style={[
+          styles.brandOrbOuter,
+          createOrbStyle(panelWidth, theme.login.orb.outerScale),
+        ]}
       />
       <View
-        className={styles.brandOrbMiddle}
-        style={createOrbStyle(panelWidth, theme.login.orb.middleScale)}
+        style={[
+          styles.brandOrbMiddle,
+          createOrbStyle(panelWidth, theme.login.orb.middleScale),
+        ]}
       />
-      <View
-        className={styles.brandOrbInner}
-        style={createOrbStyle(panelWidth)}
-      />
+      <View style={[styles.brandOrbInner, createOrbStyle(panelWidth)]} />
 
-      <View className={styles.brandLockup}>
+      <View style={styles.brandLockup}>
         <BrandMark />
         <View>
-          <Text className={styles.brandName}>OEMS</Text>
-          <Text className={styles.brandOrganization}>
+          <Text style={styles.brandName}>OEMS </Text>
+          <Text style={styles.brandOrganization}>
             ศูนย์ปฏิบัติการส่งออกน้ำมัน
           </Text>
         </View>
       </View>
 
-      <View className={styles.brandCopy}>
-        <Text className={styles.eyebrow}>OIL EXPORT OPERATIONS</Text>
-        <Text className={styles.brandTitle}>ระบบติดตามการส่งออกน้ำมัน</Text>
-        <Text className={styles.brandSubtitle}>
+      <View style={styles.brandCopy}>
+        <Text style={styles.eyebrow}>OIL EXPORT OPERATIONS</Text>
+        <Text style={styles.brandTitle}>ระบบติดตามการส่งออกน้ำมัน</Text>
+        <Text style={styles.brandSubtitle}>
           ระบบติดตามและควบคุมการส่งออกน้ำมัน
         </Text>
       </View>
 
-      <View className={styles.securityNote}>
-        <Text className={styles.securityIcon}>●</Text>
-        <Text className={styles.securityText}>
+      <View style={styles.securityNote}>
+        <Text style={styles.securityIcon}>●</Text>
+        <Text style={styles.securityText}>
           Secure government operations workspace
         </Text>
       </View>
@@ -108,7 +113,7 @@ function BrandPanel({
 }
 
 function FieldError({ message }: { message?: string }) {
-  return message ? <Text className={styles.fieldError}>{message}</Text> : null;
+  return message ? <Text style={styles.fieldError}>{message}</Text> : null;
 }
 
 /** หน้าเข้าสู่ระบบ Mobile ใช้ visual hierarchy เดียวกับ OEMS Web และปรับเป็น split layout บน Tablet */
@@ -154,48 +159,51 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      className={styles.keyboardView}
+      style={styles.keyboardView}
     >
-      <View className={`${styles.page} ${isTablet ? styles.pageTablet : ''}`}>
+      <View style={[styles.page, isTablet && styles.pageTablet]}>
         {isTablet ? (
           <BrandPanel topInset={insets.top} bottomInset={insets.bottom} />
         ) : null}
 
         <View
-          className={`${styles.formPanel} ${
-            isTablet ? styles.formPanelTablet : styles.formPanelPhone
-          }`}
+          style={[
+            styles.formPanel,
+            isTablet ? styles.formPanelTablet : styles.formPanelPhone,
+          ]}
         >
           <ScrollView
-            contentContainerClassName={styles.scrollContent}
-            contentContainerStyle={{
-              paddingTop: Math.max(insets.top, 28),
-              paddingBottom: Math.max(insets.bottom, 28),
-            }}
+            contentContainerStyle={[
+              styles.scrollContent,
+              {
+                paddingTop: Math.max(insets.top, 28),
+                paddingBottom: Math.max(insets.bottom, 28),
+              },
+            ]}
             keyboardShouldPersistTaps="handled"
             showsVerticalScrollIndicator={false}
           >
-            <View className={styles.formWrap}>
+            <View style={styles.formWrap}>
               {!isTablet ? (
-                <View className={styles.mobileBrand}>
+                <View style={styles.mobileBrand}>
                   <BrandMark compact />
-                  <Text className={styles.mobileBrandName}>OEMS</Text>
+                  <Text style={styles.mobileBrandName}>OEMS</Text>
                 </View>
               ) : null}
 
-              <Text className={styles.formTitle}>เข้าสู่ระบบ OEMS</Text>
-              <Text className={styles.formSubtitle}>
+              <Text style={styles.formTitle}>เข้าสู่ระบบ OEMS</Text>
+              <Text style={styles.formSubtitle}>
                 ระบบติดตามและควบคุมการส่งออกน้ำมัน
               </Text>
 
               {errors.form ? (
-                <View accessibilityRole="alert" className={styles.errorBanner}>
-                  <Text className={styles.errorBannerText}>{errors.form}</Text>
+                <View accessibilityRole="alert" style={styles.errorBanner}>
+                  <Text style={styles.errorBannerText}>{errors.form}</Text>
                 </View>
               ) : null}
 
-              <View className={styles.form}>
-                <Text className={styles.label}>อีเมล</Text>
+              <View style={styles.form}>
+                <Text style={styles.label}>อีเมล</Text>
                 <TextInput
                   accessibilityLabel="อีเมล"
                   autoCapitalize="none"
@@ -213,21 +221,20 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
                   placeholder="name@example.com"
                   placeholderTextColor={theme.colors.placeholder}
                   returnKeyType="next"
-                  className={`${styles.input} ${
-                    errors.email ? styles.inputError : ''
-                  }`}
+                  style={[styles.input, errors.email && styles.inputError]}
                   testID="email-input"
                   value={email}
                 />
                 <FieldError message={errors.email} />
 
-                <Text className={`${styles.label} ${styles.passwordLabel}`}>
+                <Text style={[styles.label, styles.passwordLabel]}>
                   รหัสผ่าน
                 </Text>
                 <View
-                  className={`${styles.passwordInput} ${
-                    errors.password ? styles.inputError : ''
-                  }`}
+                  style={[
+                    styles.passwordInput,
+                    errors.password && styles.inputError,
+                  ]}
                 >
                   <TextInput
                     accessibilityLabel="รหัสผ่าน"
@@ -246,7 +253,7 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
                     placeholderTextColor={theme.colors.placeholder}
                     returnKeyType="done"
                     secureTextEntry={!showPassword}
-                    className={styles.passwordTextInput}
+                    style={styles.passwordTextInput}
                     testID="password-input"
                     value={password}
                   />
@@ -257,9 +264,9 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
                     accessibilityRole="button"
                     hitSlop={8}
                     onPress={() => setShowPassword(value => !value)}
-                    className={styles.passwordToggle}
+                    style={styles.passwordToggle}
                   >
-                    <Text className={styles.passwordToggleText}>
+                    <Text style={styles.passwordToggleText}>
                       {showPassword ? 'ซ่อน' : 'แสดง'}
                     </Text>
                   </Pressable>
@@ -268,36 +275,31 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
 
                 <Pressable
                   accessibilityRole="button"
-                  className={styles.submitButton}
                   onPress={submit}
+                  style={({ pressed }) => [
+                    styles.submitButton,
+                    pressed && styles.submitButtonPressed,
+                  ]}
                   testID="login-button"
                 >
-                  <Text className={styles.submitButtonText}>เข้าสู่ระบบ</Text>
-                  <Text className={styles.submitButtonIcon}>→</Text>
+                  <Text style={styles.submitButtonText}>เข้าสู่ระบบ</Text>
+                  <Text style={styles.submitButtonIcon}>→</Text>
                 </Pressable>
               </View>
 
-              <View className={styles.demoCredentials}>
-                <Text className={styles.demoLabel}>บัญชีสำหรับทดสอบ</Text>
-                <View className={styles.demoValues}>
-                  <Text
-                    className={styles.demoCode}
-                    selectable
-                    style={demoCodeStyle}
-                  >
+              <View style={styles.demoCredentials}>
+                <Text style={styles.demoLabel}>บัญชีสำหรับทดสอบ</Text>
+                <View style={styles.demoValues}>
+                  <Text selectable style={[styles.demoCode, demoCodeStyle]}>
                     {DEVELOPMENT_CREDENTIALS.email}
                   </Text>
-                  <Text
-                    className={styles.demoCode}
-                    selectable
-                    style={demoCodeStyle}
-                  >
+                  <Text selectable style={[styles.demoCode, demoCodeStyle]}>
                     {DEVELOPMENT_CREDENTIALS.password}
                   </Text>
                 </View>
               </View>
 
-              <Text className={styles.version}>OEMS v1.0.0</Text>
+              <Text style={styles.version}>OEMS v1.0.0</Text>
             </View>
           </ScrollView>
         </View>

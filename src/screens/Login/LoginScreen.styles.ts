@@ -1,4 +1,9 @@
-import { Platform, type TextStyle, type ViewStyle } from 'react-native';
+import {
+  Platform,
+  StyleSheet,
+  type TextStyle,
+  type ViewStyle,
+} from 'react-native';
 
 import { theme } from '../../theme/theme';
 
@@ -20,65 +25,294 @@ export const demoCodeStyle: TextStyle = {
   fontFamily: Platform.select({ ios: 'Menlo', android: 'monospace' }),
 };
 
-export const styles = {
-  keyboardView: 'flex-1 bg-oems-surface',
-  page: 'flex-1 bg-oems-surface',
-  pageTablet: 'flex-row',
-  brandPanel: 'flex-[1.05] justify-between overflow-hidden bg-oems-navy px-12',
-  brandOrbOuter: 'absolute border-oems-brand-ring',
-  brandOrbMiddle: 'absolute border-oems-brand-ring-faint',
-  brandOrbInner: 'absolute border-oems-brand-ring-fainter',
-  brandLockup: 'z-10 flex-row items-center gap-3',
-  brandMarkBase: 'items-center justify-center',
-  brandMarkRegular:
-    'h-12 w-12 rounded-oems-lg border border-oems-brand-border bg-oems-brand-surface',
-  brandMarkCompact: 'h-[42px] w-[42px] rounded-[10px] border-0 bg-oems-navy',
-  brandMarkGlyphBase: 'font-bold text-oems-brand-on',
-  brandMarkGlyphRegular: 'text-[28px] leading-8',
-  brandMarkGlyphCompact: 'text-2xl leading-7',
-  brandName: 'text-lg font-bold tracking-[1.2px] text-oems-brand-on',
-  brandOrganization: 'mt-0.5 text-xs text-oems-brand-secondary',
-  brandCopy: 'z-10 max-w-[520px]',
-  eyebrow: 'text-xs font-bold tracking-[1.7px] text-oems-login-accent',
-  brandTitle:
-    'mt-4 text-[46px] font-bold leading-[55px] tracking-[-1.2px] text-oems-brand-on',
-  brandSubtitle:
-    'mt-[18px] text-[17px] leading-[26px] text-oems-brand-secondary',
-  securityNote: 'z-10 flex-row items-center gap-[9px]',
-  securityIcon: 'text-[8px] text-oems-brand-subdued',
-  securityText: 'text-[11px] tracking-[0.3px] text-oems-brand-subdued',
-  formPanel: 'bg-oems-surface',
-  formPanelPhone: 'flex-1',
-  formPanelTablet: 'flex-[0.95]',
-  scrollContent: 'flex-grow justify-center px-6',
-  formWrap: 'w-full max-w-[420px] self-center',
-  mobileBrand: 'mb-10 flex-row items-center gap-[11px]',
-  mobileBrandName: 'text-xl font-bold tracking-[1.2px] text-oems-text',
-  formTitle: 'text-[30px] font-bold leading-10 text-oems-text',
-  formSubtitle: 'mb-6 mt-1.5 text-[15px] leading-[23px] text-oems-muted',
-  errorBanner:
-    'mb-4 rounded-oems-md border border-oems-danger-border bg-oems-danger-surface px-[14px] py-3',
-  errorBannerText: 'text-[13px] leading-5 text-oems-danger',
-  form: 'mt-0.5',
-  label: 'mb-[7px] text-sm font-medium text-oems-text',
-  passwordLabel: 'mt-[17px]',
-  input:
-    'h-[50px] rounded-oems-md border border-oems-border bg-oems-surface px-[14px] text-[15px] text-oems-text',
-  inputError: '!border-oems-danger',
-  passwordInput:
-    'h-[50px] flex-row items-center rounded-oems-md border border-oems-border bg-oems-surface',
-  passwordTextInput: 'h-full flex-1 pl-[14px] text-[15px] text-oems-text',
-  passwordToggle: 'h-full justify-center px-[14px]',
-  passwordToggleText: 'text-[13px] font-semibold text-oems-primary',
-  fieldError: 'mt-[5px] text-xs text-oems-danger',
-  submitButton:
-    'mt-[22px] h-[50px] flex-row items-center justify-center gap-2.5 rounded-oems-md bg-oems-primary active:bg-oems-primary-pressed',
-  submitButtonText: 'text-[15px] font-semibold text-oems-brand-on',
-  submitButtonIcon: 'text-xl leading-[22px] text-oems-brand-on',
-  demoCredentials:
-    'mb-[27px] mt-6 flex-row items-center justify-between gap-3 rounded-[9px] border border-oems-border bg-oems-primary-subtle px-[15px] py-[13px]',
-  demoLabel: 'flex-1 text-[11px] font-medium leading-4 text-oems-muted',
-  demoValues: 'items-end gap-1',
-  demoCode: 'text-[11px] leading-[15px] text-oems-text',
-  version: 'text-center text-[11px] text-oems-muted',
-} as const;
+export const styles = StyleSheet.create({
+  keyboardView: {
+    flex: 1,
+    backgroundColor: theme.colors.surface,
+  },
+  page: {
+    flex: 1,
+    backgroundColor: theme.colors.surface,
+  },
+  pageTablet: {
+    flexDirection: 'row',
+  },
+  brandPanel: {
+    flex: 1.05,
+    justifyContent: 'space-between',
+    overflow: 'hidden',
+    backgroundColor: theme.colors.navy900,
+    paddingHorizontal: 48,
+  },
+  brandOrbOuter: {
+    position: 'absolute',
+    borderColor: theme.colors.brand.ring,
+  },
+  brandOrbMiddle: {
+    position: 'absolute',
+    borderColor: theme.colors.brand.ringFaint,
+  },
+  brandOrbInner: {
+    position: 'absolute',
+    borderColor: theme.colors.brand.ringFainter,
+  },
+  brandLockup: {
+    zIndex: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  brandMarkBase: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  brandMarkRegular: {
+    width: 48,
+    height: 48,
+    borderRadius: theme.radius.lg,
+    borderWidth: 1,
+    borderColor: theme.colors.onBrandBorder,
+    backgroundColor: theme.colors.onBrandSurface,
+  },
+  brandMarkCompact: {
+    width: 42,
+    height: 42,
+    borderRadius: 10,
+    backgroundColor: theme.colors.navy900,
+  },
+  brandMarkGlyphBase: {
+    fontWeight: '700',
+    color: theme.colors.onBrand,
+  },
+  brandMarkGlyphRegular: {
+    fontSize: 28,
+    lineHeight: 32,
+  },
+  brandMarkGlyphCompact: {
+    fontSize: 24,
+    lineHeight: 28,
+  },
+  brandName: {
+    fontSize: 18,
+    fontWeight: '700',
+    letterSpacing: 1.2,
+    color: theme.colors.onBrand,
+  },
+  brandOrganization: {
+    marginTop: 2,
+    fontSize: 12,
+    color: theme.colors.onBrandSecondary,
+  },
+  brandCopy: {
+    zIndex: 10,
+    maxWidth: 520,
+  },
+  eyebrow: {
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 1.7,
+    color: theme.colors.loginAccent,
+  },
+  brandTitle: {
+    marginTop: 16,
+    fontSize: 46,
+    fontWeight: '700',
+    lineHeight: 55,
+    letterSpacing: -1.2,
+    color: theme.colors.onBrand,
+  },
+  brandSubtitle: {
+    marginTop: 18,
+    fontSize: 17,
+    lineHeight: 26,
+    color: theme.colors.onBrandSecondary,
+  },
+  securityNote: {
+    zIndex: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 9,
+  },
+  securityIcon: {
+    fontSize: 8,
+    color: theme.colors.onBrandSubdued,
+  },
+  securityText: {
+    fontSize: 11,
+    letterSpacing: 0.3,
+    color: theme.colors.onBrandSubdued,
+  },
+  formPanel: {
+    backgroundColor: theme.colors.surface,
+  },
+  formPanelPhone: {
+    flex: 1,
+  },
+  formPanelTablet: {
+    flex: 0.95,
+  },
+  scrollContent: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+  },
+  formWrap: {
+    width: '100%',
+    maxWidth: 420,
+    alignSelf: 'center',
+  },
+  mobileBrand: {
+    marginBottom: 40,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 11,
+  },
+  mobileBrandName: {
+    fontSize: 20,
+    lineHeight: 28,
+    fontWeight: '700',
+    letterSpacing: 1.2,
+    color: theme.colors.text,
+  },
+  formTitle: {
+    fontSize: 30,
+    fontWeight: '700',
+    lineHeight: 40,
+    color: theme.colors.text,
+  },
+  formSubtitle: {
+    marginTop: 6,
+    marginBottom: 24,
+    fontSize: 15,
+    lineHeight: 23,
+    color: theme.colors.textSecondary,
+  },
+  errorBanner: {
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: theme.colors.dangerBorder,
+    borderRadius: theme.radius.md,
+    backgroundColor: theme.colors.dangerSurface,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+  },
+  errorBannerText: {
+    fontSize: 13,
+    lineHeight: 20,
+    color: theme.colors.danger,
+  },
+  form: {
+    marginTop: 2,
+  },
+  label: {
+    marginBottom: 7,
+    fontSize: 14,
+    fontWeight: '500',
+    color: theme.colors.text,
+  },
+  passwordLabel: {
+    marginTop: 17,
+  },
+  input: {
+    height: 50,
+    borderWidth: 1,
+    borderColor: theme.colors.border,
+    borderRadius: theme.radius.md,
+    backgroundColor: theme.colors.surface,
+    paddingHorizontal: 14,
+    fontSize: 15,
+    color: theme.colors.text,
+  },
+  inputError: {
+    borderColor: theme.colors.danger,
+  },
+  passwordInput: {
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: theme.colors.border,
+    borderRadius: theme.radius.md,
+    backgroundColor: theme.colors.surface,
+  },
+  passwordTextInput: {
+    height: '100%',
+    flex: 1,
+    paddingLeft: 14,
+    fontSize: 15,
+    color: theme.colors.text,
+  },
+  passwordToggle: {
+    height: '100%',
+    justifyContent: 'center',
+    paddingHorizontal: 14,
+  },
+  passwordToggleText: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: theme.colors.primary,
+  },
+  fieldError: {
+    marginTop: 5,
+    fontSize: 12,
+    color: theme.colors.danger,
+  },
+  submitButton: {
+    height: 50,
+    marginTop: 22,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10,
+    borderRadius: theme.radius.md,
+    backgroundColor: theme.colors.primary,
+  },
+  submitButtonPressed: {
+    backgroundColor: theme.colors.primaryPressed,
+  },
+  submitButtonText: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: theme.colors.onBrand,
+  },
+  submitButtonIcon: {
+    fontSize: 20,
+    lineHeight: 22,
+    color: theme.colors.onBrand,
+  },
+  demoCredentials: {
+    marginTop: 24,
+    marginBottom: 27,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+    borderWidth: 1,
+    borderColor: theme.colors.border,
+    borderRadius: 9,
+    backgroundColor: theme.colors.primarySubtle,
+    paddingHorizontal: 15,
+    paddingVertical: 13,
+  },
+  demoLabel: {
+    flex: 1,
+    fontSize: 11,
+    fontWeight: '500',
+    lineHeight: 16,
+    color: theme.colors.textSecondary,
+  },
+  demoValues: {
+    alignItems: 'flex-end',
+    gap: 4,
+  },
+  demoCode: {
+    fontSize: 11,
+    lineHeight: 15,
+    color: theme.colors.text,
+  },
+  version: {
+    textAlign: 'center',
+    fontSize: 11,
+    color: theme.colors.textSecondary,
+  },
+});

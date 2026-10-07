@@ -13,38 +13,43 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
 
   return (
     <View
-      className={styles.page}
-      style={{
-        paddingTop: Math.max(insets.top, 24),
-        paddingBottom: Math.max(insets.bottom, 24),
-      }}
+      style={[
+        styles.page,
+        {
+          paddingTop: Math.max(insets.top, 24),
+          paddingBottom: Math.max(insets.bottom, 24),
+        },
+      ]}
     >
-      <View className={styles.header}>
+      <View style={styles.header}>
         <View>
-          <Text className={styles.brand}>OEMS</Text>
-          <Text className={styles.brandCaption}>Mobile Operations</Text>
+          <Text style={styles.brand}>OEMS</Text>
+          <Text style={styles.brandCaption}>Mobile Operations</Text>
         </View>
         <Pressable
           accessibilityRole="button"
-          className={styles.logoutButton}
           onPress={() => navigation.replace('Login')}
+          style={({ pressed }) => [
+            styles.logoutButton,
+            pressed && styles.logoutButtonPressed,
+          ]}
           testID="logout-button"
         >
-          <Text className={styles.logoutButtonText}>ออกจากระบบ</Text>
+          <Text style={styles.logoutButtonText}>ออกจากระบบ</Text>
         </Pressable>
       </View>
 
-      <View className={styles.content}>
-        <Text className={styles.title}>ภาพรวมการส่งออก</Text>
-        <Text className={styles.subtitle}>
+      <View style={styles.content}>
+        <Text style={styles.title}>ภาพรวมการส่งออก</Text>
+        <Text style={styles.subtitle}>
           เข้าสู่ระบบสำเร็จ และพร้อมเชื่อมต่อหน้าจอ Mobile ตาม Requirement
         </Text>
 
-        <View className={styles.statusPanel}>
-          <View className={styles.statusIndicator} />
-          <View className={styles.statusCopy}>
-            <Text className={styles.statusTitle}>Navigation พร้อมใช้งาน</Text>
-            <Text className={styles.statusDescription}>
+        <View style={styles.statusPanel}>
+          <View style={styles.statusIndicator} />
+          <View style={styles.statusCopy}>
+            <Text style={styles.statusTitle}>Navigation พร้อมใช้งาน</Text>
+            <Text style={styles.statusDescription}>
               Login และ Home เชื่อมต่อด้วย Native Stack แล้ว
             </Text>
           </View>
